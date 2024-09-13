@@ -20,8 +20,8 @@
 	# networking.hostName = "nixos"; # Define your hostname.
 	# Pick only one of the below networking options.
 	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-	virtualisation.vmware.host.enable = true;
 	virtualisation.docker.enable = true;
+	virtualisation.vmware.host.enable = true;
 	nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
 		"vmware-workstation"
 	];
@@ -56,7 +56,7 @@
 				xss-lock slock +resetsaver &
 				/run/current-system/sw/bin/feh --bg-scale /home/user/.background-image 
 				lemonbar -d -p &
-				while true; do BAT="bat: $(cat /sys/class/power_supply/BAT0/capacity)% |"; DATE=$(date); echo "%{c} %{Sf}$BAT $DATE %{c} %{Sl}$BAT $DATE"; sleep 1; done | lemonbar -p -d &
+				while true; do BAT="bat: $(cat /sys/class/power_supply/BAT0/capacity)% |"; DATE=$(date); echo "%{c} %{Sf}$BAT $DATE"; sleep 1; done | lemonbar -p -d &
 
 				cwm
 			'';
@@ -86,6 +86,7 @@
 	extraGroups = [ "wheel" "audio" "video" "docker" "networkmanager"]; # Enable ‘sudo’ for the user.
 	packages = with pkgs; [
 			firefox
+			netsurf.browser
 			tree
 			arandr
 			autorandr
@@ -106,7 +107,7 @@
 		htop
 		tmux
 		ntfs3g
-		(import /home/user/dotfiles/nixos/dwm.nix)
+		(import /etc/nixos/dwm.nix)
 		polkit_gnome
 		xorg.xbacklight
 		xss-lock
@@ -115,6 +116,7 @@
 		unzip
 		xorg.xhost
 		wmname
+		libreoffice
 		feh
 		cwm
 		lemonbar-xft
