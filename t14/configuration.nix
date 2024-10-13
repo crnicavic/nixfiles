@@ -96,14 +96,16 @@
 	};
 	programs.light.enable = true;
 	fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
+	programs.nix-ld.enable = true;
 	programs.slock.enable = true;
 	security.polkit.enable = true;
 	# List packages installed in system profile. To search, run:
 	# $ nix search wget
 	environment.variables.PATH = [ "/usr/local/bin" ];
 	environment.systemPackages = with pkgs; [
-		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+		vim
 		git 
+		mc
 		htop
 		tmux
 		ntfs3g
@@ -118,6 +120,7 @@
 		wmname
 		libreoffice
 		feh
+		pcmanfm
 		cwm
 		lemonbar-xft
 		man-pages
