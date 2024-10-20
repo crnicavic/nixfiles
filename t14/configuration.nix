@@ -14,7 +14,27 @@
 	# Use the systemd-boot EFI boot loader.
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
-		
+
+	services.tlp = {
+		enable = true;
+		settings = {
+		CPU_SCALING_GOVERNOR_ON_AC = "performance";
+		CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+		CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+		CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+#		CPU_MIN_PERF_ON_AC = 0;
+#		CPU_MAX_PERF_ON_AC = 100;
+#		CPU_MIN_PERF_ON_BAT = 0;
+#		CPU_MAX_PERF_ON_BAT = 20;
+
+		#Optional helps save long term battery health
+		START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
+		STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+
+		};
+	};
 	boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/e8cf8f5d-0cfc-45fd-b9bd-265b662bff01";
 
 	# networking.hostName = "nixos"; # Define your hostname.
@@ -37,11 +57,10 @@
 		{ 
 			manage = "desktop";
 			name = "dwm";
-			# i honestly dont know why this works
 			start = ''
 				setxkbmap -option caps:escape
 				xset s 600
-				xss-lock slock +resetsaver &
+				xss-lock lock_screen +resetsaver &
 				/run/current-system/sw/bin/feh --bg-scale /home/user/.background-image 
 				dwmblocks &
 				dwm
@@ -53,11 +72,10 @@
 			start = ''
 				setxkbmap -option caps:escape
 				xset s 600
-				xss-lock slock +resetsaver &
+				xss-lock lock_screen +resetsaver &
 				/run/current-system/sw/bin/feh --bg-scale /home/user/.background-image 
 				lemonbar -d -p &
 				while true; do BAT="bat: $(cat /sys/class/power_supply/BAT0/capacity)% |"; DATE=$(date); echo "%{c} %{Sf}$BAT $DATE"; sleep 1; done | lemonbar -p -d &
-
 				cwm
 			'';
 		}
@@ -97,8 +115,8 @@
 	programs.light.enable = true;
 	fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 	programs.nix-ld.enable = true;
-	programs.slock.enable = true;
 	security.polkit.enable = true;
+	programs.slock.enable = true;
 	# List packages installed in system profile. To search, run:
 	# $ nix search wget
 	environment.variables.PATH = [ "/usr/local/bin" ];
