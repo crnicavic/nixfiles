@@ -5,6 +5,7 @@ in stdenv.mkDerivation {
 	name = "dwm";
 	system = "x86_64-linux";
 	nativeBuildInputs = [
+		pkg-config
 		autoPatchelfHook
 		xorg.libX11 
 		xorg.libXrandr
@@ -19,12 +20,13 @@ in stdenv.mkDerivation {
 	];
 	src = fetchgit {
 		url = https://github.com/crnicavic/dwm-desktop.git;
-		hash = "sha256-gu1dCEih5hEHmklFtZnhcasZEh2YyvVbPhqVP0gVpio=";
+		hash = "sha256-VF67Ix/ydwALHJZjh60RzGG4renSoUHSeY3OnDwSSSQ=";
 	};
 	buildPhase = ''
 		make -C ./dwm/
 		make -C ./dmenu/
 		make -C ./dwmblocks/
+		make -C ./st/
 	'';
 	installPhase = ''
 		mkdir -p $out/bin
@@ -34,6 +36,7 @@ in stdenv.mkDerivation {
 		mv ./dmenu/dmenu_path $out/bin
 		mv ./dmenu/stest $out/bin
 		mv ./dwmblocks/dwmblocks $out/bin
+		mv ./st/st $out/bin
 		cp ./dwm-scripts/* $out/bin
 	'';
 	
