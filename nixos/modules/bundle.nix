@@ -5,6 +5,7 @@
 		./dwm.nix	
 		./cwm.nix
 		./vmware.nix
+		./pipewire.nix
 		./docker.nix
 	];
 }
