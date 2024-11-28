@@ -20,7 +20,7 @@ in stdenv.mkDerivation {
 	];
 	src = fetchgit {
 		url = https://github.com/crnicavic/dwm-desktop.git;
-		hash = "sha256-VF67Ix/ydwALHJZjh60RzGG4renSoUHSeY3OnDwSSSQ=";
+		hash = "sha256-jXqXC2cwdX5H6G9u324LHahRFiVdxpTJbjU5h7UumX0=";
 	};
 	buildPhase = ''
 		make -C ./dwm/
