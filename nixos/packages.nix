@@ -1,15 +1,21 @@
-{ pkgs, lib, ...}: {
+{ pkgs, lib, config, ...}: 
+let
+	unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in {
 	# fuck home-manager	
 	users.users.user.packages = with pkgs; [
-			firefox
-			tree
-			arandr
-			autorandr
-			cmus
-		];
+		firefox
+		tree
+		arandr
+		autorandr
+		cmus
+		vscodium
+	];
 
 	environment.systemPackages = with pkgs; [
+		unstable.godot_4
 		vim
+		mutt
 		git 
 		mc
 		htop

@@ -14,12 +14,9 @@
 	networking.hostName = "nixos";
 	networking.networkmanager.enable = true;
 
+	hardware.bluetooth.enable = true;
+	hardware.bluetooth.powerOnBoot = true;
 	time.timeZone = "Europe/Belgrade";
-
-	services.pipewire = {
-		enable = true;
-		pulse.enable = true;
-	};
 
 	# Enable touchpad support
 	services.libinput.enable = true;
