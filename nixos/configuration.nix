@@ -17,6 +17,11 @@
 	hardware.bluetooth.enable = true;
 	hardware.bluetooth.powerOnBoot = true;
 	time.timeZone = "Europe/Belgrade";
+	
+	services.gvfs.enable = true;
+	
+	system.autoUpgrade.enable = true;
+	system.autoUpgrade.allowReboot = true;
 
 	# Enable touchpad support
 	services.libinput.enable = true;
