@@ -10,6 +10,7 @@ in {
 		autorandr
 		cmus
 		vscodium
+		scrot
 	];
 
 	environment.systemPackages = with pkgs; [
