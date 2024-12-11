@@ -10,7 +10,7 @@ in {
 		autorandr
 		cmus
 		vscodium
-		scrot
+		xfce.xfce4-screenshooter
 	];
 
 	environment.systemPackages = with pkgs; [
