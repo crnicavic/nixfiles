@@ -26,6 +26,8 @@
 	# Enable touchpad support
 	services.libinput.enable = true;
 
+	services.fwupd.enable = true;
+
 	users.users.user = {
 		isNormalUser = true;
 		extraGroups = [ "wheel" "audio" "video" "networkmanager"];
