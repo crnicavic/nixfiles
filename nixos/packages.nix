@@ -16,6 +16,7 @@ in {
 	environment.systemPackages = with pkgs; [
 		unstable.godot_4
 		pavucontrol
+		polybar	
 		vim
 		mutt
 		git 
