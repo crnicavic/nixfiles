@@ -13,6 +13,9 @@
 
 	networking.hostName = "nixos";
 	networking.networkmanager.enable = true;
+	
+	programs.vim.enable = true;	
+	programs.vim.defaultEditor = true;
 
 	hardware.bluetooth.enable = true;
 	hardware.bluetooth.powerOnBoot = true;
