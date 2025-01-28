@@ -5,7 +5,7 @@
 		gnome-photos
 		gnome-tour
 		gedit
-	]) ++ (with pkgs.gnome; [
+	]) ++ (with pkgs; [
 		cheese # webcam tool
 		gnome-music
 		gnome-terminal
@@ -19,4 +19,5 @@
 		hitori # sudoku game
 		atomix # puzzle game
 	]);
+	services.power-profiles-daemon.enable=false;
 }
