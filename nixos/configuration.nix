@@ -14,14 +14,9 @@
 	networking.hostName = "nixos";
 	networking.networkmanager.enable = true;
 	
-	programs.vim.enable = true;	
-	programs.vim.defaultEditor = true;
-
 	hardware.bluetooth.enable = true;
 	hardware.bluetooth.powerOnBoot = true;
 	time.timeZone = "Europe/Belgrade";
-	
-	services.gvfs.enable = true;
 	
 	system.autoUpgrade.enable = true;
 	system.autoUpgrade.allowReboot = true;

@@ -13,6 +13,9 @@ in {
 		xfce.xfce4-screenshooter
 	];
 
+	programs.vim.enable = true;	
+	programs.vim.defaultEditor = true;
+
 	environment.systemPackages = with pkgs; [
 		unstable.godot_4
 		pavucontrol
