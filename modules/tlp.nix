@@ -13,8 +13,8 @@
 #			CPU_MIN_PERF_ON_BAT = 0;
 #			CPU_MAX_PERF_ON_BAT = 20;
 
-			START_CHARGE_THRESH_BAT0 = 40; # charge bellow 40%
-			STOP_CHARGE_THRESH_BAT0 = 80; # discharge at 80%
+			START_CHARGE_THRESH_BAT0 = 80; # charge bellow 40%
+			STOP_CHARGE_THRESH_BAT0 = 90; # discharge at 80%
 
 		};
 	};

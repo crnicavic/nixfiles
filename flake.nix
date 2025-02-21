@@ -7,9 +7,10 @@
 		nixpkgs_2405.url = "github:nixos/nixpkgs?rev=1bde3e8e37a72989d4d455adde764d45f45dc11c";
 	};
 
-	outputs = { nixpkgs, ... } @ inputs: {
+	outputs = { nixpkgs, ... } @ inputs: 
+	{
 		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-			specialArgs = {};
+			specialArgs = { inherit inputs; };
 			modules =
 			[
 				./configuration.nix

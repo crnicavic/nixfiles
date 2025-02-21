@@ -1,18 +1,6 @@
-{ pkgs, lib, config, ...}:
-let
-     pkgs_old = import (builtins.fetchGit {
-         # Descriptive name to make the store path easier to identify
-         name = "my-old-revision";
-         url = "https://github.com/NixOS/nixpkgs/";
-         ref = "refs/heads/nixos-24.05";
-         rev = "6eb01a67e1fc558644daed33eaeb937145e17696";
-     }) { inherit (pkgs) system; };
-
-     myPkg = pkgs.vmware-workstation;
-in
-{ 
-	nixpkgs.config.allowUnfree = true;
-
+{ pkgs, lib, config, ...}: 
+{
+	# fuck home-manager	
 	users.users.user.packages = with pkgs; [
 		firefox
 		tree
@@ -21,14 +9,13 @@ in
 		cmus
 		vscodium
 		xfce.xfce4-screenshooter
-		godot_4
-		heroic
-		r2modman
-		lutris
-		foot
 	];
+
+	programs.vim.enable = true;	
+	programs.vim.defaultEditor = true;
+
 	environment.systemPackages = with pkgs; [
-		input-leap
+		godot_4
 		pavucontrol
 		polybar	
 		vim
@@ -48,7 +35,6 @@ in
 		feh
 		pcmanfm
 		man-pages
-		cryptsetup
 		man-pages-posix
 	];
 	
