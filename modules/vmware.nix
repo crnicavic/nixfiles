@@ -7,8 +7,7 @@
 		inherit (pkgs.stdenv.hostPlatform) system;
 		inherit (config.nixpkgs) config;
 	};
-
-	users.users.user.packages = [
-		pkgs_2405.vmware-workstation	
-	];
+	
+	virtualisation.host.vmware.enable = true;
+	virtualisation.host.vmware.package = pkgs_2405.vmware-workstation;
 }
