@@ -19,6 +19,7 @@
 		pavucontrol
 		polybar	
 		vim
+		foot
 		mutt
 		git 
 		mc
