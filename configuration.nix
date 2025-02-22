@@ -13,6 +13,8 @@
 
 	networking.hostName = "nixos";
 	networking.networkmanager.enable = true;
+
+	nix.settings.experimental-features = [ "nix-command" "flakes"];
 	
 	hardware.bluetooth.enable = true;
 	hardware.bluetooth.powerOnBoot = true;
