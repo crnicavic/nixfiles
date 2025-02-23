@@ -1,20 +1,20 @@
-{ fetchgit, lib, stdenv, pkgs } :
+{ lib, stdenv, fetchgit, pkg-config, autoPatchelfHook, xorg, libxcrypt, gcc-unwrapped, gnumake }:
 stdenv.mkDerivation rec {
 	name = "dwm";
 	system = "x86_64-linux";
-	nativeBuildInputs = with pkgs; [
+	nativeBuildInputs = [
 		pkg-config
 		autoPatchelfHook
+	];
+	buildInputs = [
+		gcc-unwrapped
+		gnumake
 		xorg.libX11 
 		xorg.libXrandr
 		xorg.libXinerama 
 		xorg.libXft
 		xorg.libXext
 		libxcrypt
-	];
-	buildInputs = with pkgs; [
-		gcc-unwrapped
-		gnumake
 	];
 	src = fetchgit {
 		url = https://github.com/crnicavic/dwm-desktop.git;
@@ -38,9 +38,9 @@ stdenv.mkDerivation rec {
 		cp ./dwm-scripts/* $out/bin
 	'';
 	
-	meta = with stdenv.lib; {
+	meta = {
 		description = "dwm";
-		platforms = ["x86_64-linux"];
+		platforms = lib.platforms.linux;
 	};
 }
 
