@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
-	environment.systemPackages = with pkgs; [
-		(import ./dwm-pkg.nix)
+	environment.systemPackages = [
+		(import ../dwm-pkg.nix { fetchgit = pkgs.fetchgit; lib = pkgs.lib; stdenv = pkgs.stdenv; pkgs = pkgs; }) 
 	];
 
 	services.xserver.displayManager.session = [

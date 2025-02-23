@@ -15,13 +15,8 @@
 	programs.vim.defaultEditor = true;
 
 	environment.systemPackages = with pkgs; [
-		nwg-displays
-		godot_4
-		bemenu
 		pavucontrol
-		polybar	
 		vim
-		foot
 		mutt
 		git 
 		mc
