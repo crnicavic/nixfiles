@@ -1,10 +1,8 @@
-with import <nixpkgs> {};
-with fetchgit;
-let
-in stdenv.mkDerivation {
+{ fetchgit, lib, stdenv, pkgs } :
+stdenv.mkDerivation rec {
 	name = "dwm";
 	system = "x86_64-linux";
-	nativeBuildInputs = [
+	nativeBuildInputs = with pkgs; [
 		pkg-config
 		autoPatchelfHook
 		xorg.libX11 
@@ -14,7 +12,7 @@ in stdenv.mkDerivation {
 		xorg.libXext
 		libxcrypt
 	];
-	buildInputs = [
+	buildInputs = with pkgs; [
 		gcc-unwrapped
 		gnumake
 	];
