@@ -17,6 +17,14 @@
 					./hosts/pc-conf.nix
 				];
 			};
+				
+			nixos = nixpkgs.lib.nixosSystem rec {
+				system = "x86_64-linux";
+				modules =
+				[
+					./hosts/t14-conf.nix
+				];
+			};
 		};
 	};
 }
