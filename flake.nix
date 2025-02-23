@@ -9,18 +9,14 @@
 
 	outputs = { nixpkgs, ... } @ inputs: 
 	{
-		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
-			system = "x86_64-linux";
-			specialArgs = {
-				pkgs_2405 = import inputs.nixpkgs_2405 {
-					inherit system;
-					config.allowUnfree = true;
-				};
+		nixosConfigurations = {
+			nixpc = nixpkgs.lib.nixosSystem rec {
+				system = "x86_64-linux";
+				modules =
+				[
+					./hosts/pc-conf.nix
+				];
 			};
-			modules =
-			[
-				./configuration.nix
-			];
 		};
 	};
 }
