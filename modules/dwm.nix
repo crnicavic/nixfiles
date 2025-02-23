@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
 	environment.systemPackages = [
-		(pkgs.callPackage ../dwm-pkg.nix {})
+		(pkgs.callPackage ../pkgs/dwm-pkg.nix {})
 	];
 
 	services.xserver.displayManager.session = [
