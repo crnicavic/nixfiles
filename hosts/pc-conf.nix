@@ -1,9 +1,17 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: 
+{
 	imports = [ 
 		# Include the results of the hardware scan.
 		./hardware/pc-hardware-conf.nix
 		../packages.nix
-		../modules/bundle.nix
+		../modules/tlp.nix
+		../modules/xserver.nix
+		../modules/vmware.nix
+		../modules/steam.nix
+		../modules/dwm.nix
+		../modules/gnome.nix
+		../modules/pipewire.nix
+		../modules/docker.nix
 	];
 
 	# Use the systemd-boot EFI boot loader.
@@ -24,6 +32,8 @@
 
 	nix.settings.experimental-features = [ "nix-command" "flakes"];
 	
+	nixpkgs.config.allowUnfree = true;
+
 	# Set your time zone.
 	time.timeZone = "Europe/Belgrade";
 
@@ -40,7 +50,7 @@
 	environment.variables.PATH = [ "/usr/local/bin" ];
 	
 	system.stateVersion = "24.05"; 
-	
+
 	system.autoUpgrade.enable = true;
 }
 
