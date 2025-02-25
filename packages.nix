@@ -8,6 +8,7 @@
 		autorandr
 		cmus
 		vscodium
+		xournalpp
 		xfce.xfce4-screenshooter
 	];
 
@@ -15,6 +16,7 @@
 	programs.vim.defaultEditor = true;
 
 	environment.systemPackages = with pkgs; [
+		foot
 		pavucontrol
 		vim
 		mutt
