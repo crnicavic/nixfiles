@@ -25,6 +25,15 @@
 					./hosts/t14-conf.nix
 				];
 			};
+
+			nix-surface = nixpkgs.lib.nixosSystem rec {
+				system = "x86_64-linux";
+				modules = 
+				[
+					./hosts/surface
+				];
+
+			};
 		};
 	};
 }
