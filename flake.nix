@@ -22,7 +22,7 @@
 				system = "x86_64-linux";
 				modules =
 				[
-					./hosts/t14-conf.nix
+					./hosts/t14
 				];
 			};
 

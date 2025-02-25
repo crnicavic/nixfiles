@@ -1,8 +1,16 @@
 { config, lib, pkgs, ... }: {
 	imports = [ 
-		./hardware/t14-hardware-conf.nix
-		../packages.nix
-		../modules/bundle.nix
+		./hardware-configuration.nix
+
+		../../packages.nix
+
+		../../modules/docker.nix
+		../../modules/dwm.nix
+		../../modules/gnome.nix
+		../../modules/pipewire.nix
+		../../modules/tlp.nix
+		../../modules/vmware.nix
+		../../modules/xserver.nix
 	];
 
 	# Use the systemd-boot EFI boot loader.
@@ -23,6 +31,7 @@
 	# Enable touchpad support
 	services.libinput.enable = true;
 
+	nixpkgs.config.allowUnfree = true;
 	services.fwupd.enable = true;
 
 	users.users.user = {
