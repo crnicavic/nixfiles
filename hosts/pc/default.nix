@@ -2,16 +2,18 @@
 {
 	imports = [ 
 		# Include the results of the hardware scan.
-		./hardware/pc-hardware-conf.nix
-		../packages.nix
-		../modules/tlp.nix
-		../modules/xserver.nix
-		../modules/vmware.nix
-		../modules/steam.nix
-		../modules/dwm.nix
-		../modules/gnome.nix
-		../modules/pipewire.nix
-		../modules/docker.nix
+		./hardware-configuration.nix
+
+		../../packages.nix
+
+		../../modules/tlp.nix
+		../../modules/xserver.nix
+		../../modules/vmware.nix
+		../../modules/steam.nix
+		../../modules/dwm.nix
+		../../modules/gnome.nix
+		../../modules/pipewire.nix
+		../../modules/docker.nix
 	];
 
 	# Use the systemd-boot EFI boot loader.

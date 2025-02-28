@@ -14,7 +14,7 @@
 				system = "x86_64-linux";
 				modules =
 				[
-					./hosts/pc-conf.nix
+					./hosts/pc
 				];
 			};
 				
