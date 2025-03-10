@@ -9,6 +9,7 @@
 		../../modules/gnome.nix
 		../../modules/vmware.nix
 		../../modules/xserver.nix
+		../../modules/tlp.nix
 		../../modules/pipewire.nix
 	];
 
