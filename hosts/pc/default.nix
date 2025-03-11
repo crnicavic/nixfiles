@@ -45,7 +45,7 @@
 	 # Define a user account. Don't forget to set a password with ‘passwd’.
 	users.users.user = {
 		isNormalUser = true;
-		extraGroups = [ "wheel" "audio" "video" "docker" "networkmanager"]; # Enable ‘sudo’ for the user.
+		extraGroups = [ "wheel" "audio" "video" "networkmanager"]; # Enable ‘sudo’ for the user.
 	};
 	fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 	

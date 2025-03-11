@@ -30,6 +30,8 @@
 	
 	system.autoUpgrade.enable = true;
 
+	nix.settings.experimental-features = [ "nix-command" "flakes"];
+
 	# Enable touchpad support
 	services.libinput.enable = true;
 
