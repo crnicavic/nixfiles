@@ -4,20 +4,23 @@
 	users.users.user.packages = with pkgs; [
 		firefox
 		tree
+		input-leap
 		arandr
 		autorandr
 		cmus
 		vscodium
 		xournalpp
 		xfce.xfce4-screenshooter
+		libreoffice
+		feh
+		foot
+		pavucontrol
 	];
 
 	programs.vim.enable = true;	
 	programs.vim.defaultEditor = true;
-
+	programs.direnv.enable = true;
 	environment.systemPackages = with pkgs; [
-		foot
-		pavucontrol
 		vim
 		mutt
 		git 
@@ -31,9 +34,6 @@
 		unzip
 		xorg.xhost
 		wmname
-		libreoffice
-		feh
-		pcmanfm
 		man-pages
 		man-pages-posix
 	];
