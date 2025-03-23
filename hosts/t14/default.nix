@@ -34,6 +34,8 @@
 	nixpkgs.config.allowUnfree = true;
 	services.fwupd.enable = true;
 
+	services.hardware.bolt.enable = true;
+
 	users.users.user = {
 		isNormalUser = true;
 		extraGroups = [ "wheel" "audio" "video" "networkmanager"];
