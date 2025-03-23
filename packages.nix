@@ -8,6 +8,7 @@
 		arandr
 		autorandr
 		cmus
+		vscode
 		vscodium
 		xournalpp
 		xfce.xfce4-screenshooter
