@@ -26,6 +26,7 @@
 	hardware.bluetooth.powerOnBoot = true;
 	time.timeZone = "Europe/Belgrade";
 	
+	nix.settings.experimental-features = [ "nix-command" "flakes"];
 	system.autoUpgrade.enable = true;
 
 	# Enable touchpad support
