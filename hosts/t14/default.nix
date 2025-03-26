@@ -11,6 +11,7 @@
 		../../modules/tlp.nix
 		../../modules/vmware.nix
 		../../modules/xserver.nix
+		../../modules/librewolf.nix
 	];
 
 	# Use the systemd-boot EFI boot loader.
@@ -26,6 +27,7 @@
 	hardware.bluetooth.powerOnBoot = true;
 	time.timeZone = "Europe/Belgrade";
 	
+	nix.settings.experimental-features = [ "nix-command" "flakes"];
 	system.autoUpgrade.enable = true;
 
 	# Enable touchpad support
@@ -33,6 +35,8 @@
 
 	nixpkgs.config.allowUnfree = true;
 	services.fwupd.enable = true;
+
+	services.hardware.bolt.enable = true;
 
 	users.users.user = {
 		isNormalUser = true;

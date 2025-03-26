@@ -2,8 +2,8 @@
   description = "A very basic flake";
 
 	inputs = {
-		nixpkgs_unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+		nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+		nixpkgs_stable.url = "github:nixos/nixpkgs/nixos-24.11";
 		nixpkgs_2405.url = "github:nixos/nixpkgs?rev=1bde3e8e37a72989d4d455adde764d45f45dc11c";
 	};
 
