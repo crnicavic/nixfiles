@@ -30,6 +30,8 @@
 	programs.vim.enable = true;	
 	programs.vim.defaultEditor = true;
 
+	nix.settings.experimental-features = [ "nix-command" "flakes"];
+
 	hardware.bluetooth.enable = true;
 	hardware.bluetooth.powerOnBoot = true;
 	time.timeZone = "Europe/Belgrade";
@@ -49,6 +51,8 @@
 	};
 	fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 	security.polkit.enable = true;
+
+	nixpkgs.config.allowUnfree = true;
 
 	# not very nix-like but works for me
 	environment.variables.PATH = [ "/usr/local/bin" ];
