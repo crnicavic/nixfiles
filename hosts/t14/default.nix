@@ -11,6 +11,7 @@
 		../../modules/tlp.nix
 		../../modules/vmware.nix
 		../../modules/xserver.nix
+		../../modules/librewolf.nix
 	];
 
 	# Use the systemd-boot EFI boot loader.

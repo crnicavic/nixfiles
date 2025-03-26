@@ -2,7 +2,6 @@
 {
 	# fuck home-manager	
 	users.users.user.packages = with pkgs; [
-		firefox
 		tree
 		input-leap
 		arandr
