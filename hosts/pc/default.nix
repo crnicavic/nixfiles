@@ -1,13 +1,13 @@
 { config, lib, pkgs, ... }: 
 {
 	imports = [ 
-	# Include the results of the hardware scan.
+# Include the results of the hardware scan.
 		./hardware-configuration.nix
 
 		../../modules/docker.nix
 	];
 
-	# Use the systemd-boot EFI boot loader.
+# Use the systemd-boot EFI boot loader.
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
 
@@ -34,16 +34,16 @@
 
 	nix.settings.experimental-features = [ "nix-command" "flakes"];
 
-	# Set your time zone.
+# Set your time zone.
 	time.timeZone = "Europe/Belgrade";
 
-	# Enable touchpad support (enabled default in most desktopManager).
+# Enable touchpad support (enabled default in most desktopManager).
 	services.libinput.enable = true;
 
-	# Define a user account. Don't forget to set a password with ‘passwd’.
+# Define a user account. Don't forget to set a password with ‘passwd’.
 	users.users.user = {
 		isNormalUser = true;
-		extraGroups = [ "wheel" ] # Enable ‘sudo’ for the user.
+		extraGroups = [ "wheel" "libvirtd" ]; # Enable ‘sudo’ for the user.
 	};
 	fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 
@@ -52,25 +52,40 @@
 	system.stateVersion = "24.05"; 
 
 	system.autoUpgrade.enable = true;
-	
+
+	virtualisation.libvirtd = {
+		enable = true;
+		qemu = {
+			package = pkgs.qemu_kvm;
+			runAsRoot = true;
+			swtpm.enable = true;
+			ovmf = {
+				enable = true;
+				packages = [(pkgs.OVMF.override {
+						secureBoot = true;
+						tpmSupport = true;
+						}).fd];
+			};
+		};
+	};
 	programs.vim.enable = true;	
 	programs.vim.defaultEditor = true;
 	programs.direnv.enable = true;
 	environment.systemPackages = with pkgs; [
 		tree
-		vim
-		mutt
-		git 
-		mc
-		htop
-		tmux
-		ntfs3g
-		acpi
-		zip
-		unzip
-		xorg.xhost
-		man-pages
-		man-pages-posix
+			vim
+			mutt
+			git 
+			mc
+			htop
+			tmux
+			ntfs3g
+			acpi
+			zip
+			unzip
+			xorg.xhost
+			man-pages
+			man-pages-posix
 	];
 }
 
