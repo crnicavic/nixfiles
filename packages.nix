@@ -9,6 +9,7 @@
 		busybox
 		cmus
 		vscodium
+		openvpn
 		xournalpp
 		xfce.xfce4-screenshooter
 		libreoffice
