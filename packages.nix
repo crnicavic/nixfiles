@@ -6,6 +6,7 @@
 		input-leap
 		arandr
 		autorandr
+		busybox
 		cmus
 		vscodium
 		xournalpp
@@ -24,6 +25,7 @@
 		mutt
 		git 
 		mc
+		vifm
 		htop
 		tmux
 		ntfs3g
@@ -49,4 +51,5 @@
 	programs.light.enable = true;
 	programs.nix-ld.enable = true;
 	programs.slock.enable = true;
+	programs.virt-manager.enable = true;
 }
