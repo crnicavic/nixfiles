@@ -1,9 +1,13 @@
 { config, lib, pkgs, ... }: 
-{
+let
+	# generate via openvpn --genkey --secret openvpn-laptop.key
+	client-key = "/home/user/openvpn-laptop.key";
+	domain = "govnoobeseno.duckdns.org";
+	vpn-dev = "tun0";
+	port = 1194;
+in {
 	imports = [ 
-# Include the results of the hardware scan.
 		./hardware-configuration.nix
-
 		../../modules/docker.nix
 	];
 
@@ -48,7 +52,6 @@
 
 	environment.variables.PATH = [ "/usr/local/bin" ];
 
-	system.stateVersion = "24.05"; 
 
 	system.autoUpgrade.enable = true;
 
@@ -78,6 +81,7 @@
 		git 
 		mc
 		htop
+		openvpn
 		tmux
 		ntfs3g
 		acpi
@@ -105,8 +109,8 @@
 		"d /srv/samba/myshare 0777 root root -"
 	];
 
-	networking.firewall.allowedTCPPorts = [ 445 139 51820 ];
-	networking.firewall.allowedUDPPorts = [ 137 138 51820 ];
+	networking.firewall.allowedTCPPorts = [ 445 139 port ];
+	networking.firewall.allowedUDPPorts = [ 137 138 port ];
 	networking.firewall.enable = true;
 	networking.firewall.allowPing = true;
 	services.duckdns = {
@@ -115,5 +119,62 @@
 		tokenFile = "/home/user/duckdns-token";
 	};
 
+# sudo systemctl start nat
+	networking.nat = {
+		enable = true;
+		externalInterface = "eno1";
+		internalInterfaces  = [ vpn-dev ];
+	};
+	networking.firewall.trustedInterfaces = [ vpn-dev ];
+		services.openvpn.servers.smartphone.config = ''
+		dev ${vpn-dev}
+	proto udp
+		ifconfig 10.8.0.1 10.8.0.2
+		secret ${client-key}
+	port ${toString port}
+
+	cipher AES-256-CBC
+		auth-nocache
+
+		comp-lzo
+		keepalive 10 60
+		ping-timer-rem
+		persist-tun
+		persist-key
+		'';
+
+	environment.etc."openvpn/smartphone-client.ovpn" = {
+		text = ''
+			dev tun
+			remote "${domain}"
+			ifconfig 10.8.0.2 10.8.0.1
+			port ${toString port}
+		redirect-gateway def1
+
+			cipher AES-256-CBC
+			auth-nocache
+
+			comp-lzo
+			keepalive 10 60
+			resolv-retry infinite
+			nobind
+			persist-key
+			persist-tun
+			secret [inline]
+
+			'';
+		mode = "600";
+	};
+	system.activationScripts.openvpn-addkey = ''
+		f="/etc/openvpn/smartphone-client.ovpn"
+		if ! grep -q '<secret>' $f; then
+			echo "appending secret key"
+				echo "<secret>" >> $f
+				cat ${client-key} >> $f
+				echo "</secret>" >> $f
+				fi
+				'';
+
+	system.stateVersion = "24.05"; 
 }
 
