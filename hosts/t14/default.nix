@@ -33,6 +33,7 @@
 	# Enable touchpad support
 	services.libinput.enable = true;
 
+	services.gvfs.enable = true;
 	nixpkgs.config.allowUnfree = true;
 	services.fwupd.enable = true;
 
