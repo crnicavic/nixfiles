@@ -6,7 +6,6 @@
 		input-leap
 		arandr
 		autorandr
-		busybox
 		cmus
 		vscodium
 		openvpn
