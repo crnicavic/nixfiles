@@ -76,7 +76,6 @@
 		vim
 		mutt
 		git 
-		wireguard-tools
 		mc
 		htop
 		tmux
@@ -116,38 +115,5 @@
 		tokenFile = "/home/user/duckdns-token";
 	};
 
-# enable NAT
-	networking.nat.enable = true;
-	networking.nat.externalInterface = "eno1";
-	networking.nat.internalInterfaces = [ "wg0" ];
-
-	networking.wireguard.interfaces = {
-		wg0 = {
-			ips = [ "10.100.0.1/24" ];
-
-			listenPort = 51820;
-
-			# This allows the wireguard server to route your traffic to the 
-			# internet and hence be like a VPN for this to work you have to set
-			# the dnsserver IP of your router (or dnsserver of choice) in your clients
-			postSetup = ''
-				${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.1/24 -o eno1 -j MASQUERADE
-				'';
-
-			# This undoes the above command
-			postShutdown = ''
-				${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.1/24 -o eno1 -j MASQUERADE
-				'';
-
-			privateKeyFile = "/home/user/wireguard-keys/private";
-
-			peers = [
-			{ 
-				publicKey = "nVSvxKKzl3JX3oXTxeK8mcwgTZOky6/F9UJx5YuRgCg=";
-				allowedIPs = [ "10.100.0.2/32" ];
-			}
-			];
-		};
-	};
 }
 
