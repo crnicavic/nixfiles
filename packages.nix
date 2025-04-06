@@ -6,6 +6,7 @@
 		input-leap
 		arandr
 		autorandr
+		virt-viewer
 		cmus
 		vscodium
 		openvpn
