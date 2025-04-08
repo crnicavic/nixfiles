@@ -17,7 +17,6 @@
 		../../modules/pipewire.nix
 		../../modules/dwm.nix
 		../../modules/gnome.nix
-		../../modules/librewolf.nix
 	];
 
 	boot.loader.systemd-boot.enable = true;
