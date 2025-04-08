@@ -13,13 +13,10 @@
 		../../modules/xserver.nix
 		../../modules/librewolf.nix
 	];
-
-# Use the systemd-boot EFI boot loader.
-	boot.loader.systemd-boot.enable = true;
-	boot.loader.efi.canTouchEfiVariables = true;
 	boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/e8cf8f5d-0cfc-45fd-b9bd-265b662bff01";
+	boot.loader.efi.canTouchEfiVariables = true;
+	boot.loader.systemd-boot.enable = true;
 
-	# not very nix-like but works for me
 	environment.variables.PATH = [ "/usr/local/bin" ];
 
 	fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
@@ -27,23 +24,22 @@
 	hardware.bluetooth.enable = true;
 	hardware.bluetooth.powerOnBoot = true;
 
-	nixpkgs.config.allowUnfree = true;
-	nix.settings.experimental-features = [ "nix-command" "flakes"];
-
 	networking.hostName = "nix-t14";
 	networking.networkmanager.enable = true;
-	
+
+	nix.settings.experimental-features = [ "nix-command" "flakes"];
+	nixpkgs.config.allowUnfree = true;
+
 	security.polkit.enable = true;
 
-	# Enable touchpad support
-	services.libinput.enable = true;
-	services.hardware.bolt.enable = true;
-	services.gvfs.enable = true;
 	services.fwupd.enable = true;
+	services.gvfs.enable = true;
+	services.hardware.bolt.enable = true;
+	services.libinput.enable = true;
 
 	system.autoUpgrade.enable = true;
 	system.stateVersion = "24.05"; 
-	
+
 	time.timeZone = "Europe/Belgrade";
 
 	users.users.user = {
@@ -51,4 +47,3 @@
 		extraGroups = [ "wheel" "audio" "video" "networkmanager"];
 	};
 }
-
