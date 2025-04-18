@@ -14,6 +14,7 @@
 		xfce.xfce4-screenshooter
 		libreoffice
 		feh
+		veracrypt
 		foot
 		pavucontrol
 	];
