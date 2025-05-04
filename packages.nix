@@ -3,13 +3,11 @@
 	# fuck home-manager	
 	users.users.user.packages = with pkgs; [
 		tree
-		input-leap
 		arandr
 		autorandr
-		virt-viewer
+		r2modman
 		cmus
 		vscodium
-		openvpn
 		xournalpp
 		xfce.xfce4-screenshooter
 		libreoffice
