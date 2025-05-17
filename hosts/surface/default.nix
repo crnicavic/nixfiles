@@ -9,6 +9,7 @@
 		../../modules/xserver.nix
 		../../modules/pipewire.nix
 		../../modules/dwm.nix
+		../../modules/steam.nix
 		../../modules/gnome.nix
 		../../modules/librewolf.nix
 	];
