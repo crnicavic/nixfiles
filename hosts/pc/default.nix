@@ -8,7 +8,7 @@
 
 		../../modules/tlp.nix
 		../../modules/xserver.nix
-		../../modules/vmware.nix
+		../../modules/librewolf.nix
 		../../modules/steam.nix
 		../../modules/dwm.nix
 		../../modules/gnome.nix
